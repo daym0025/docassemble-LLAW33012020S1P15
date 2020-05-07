@@ -1,0 +1,144 @@
+---
+metadata:
+  title: |
+    Application for Stay Form
+  short title: |
+    Style Demonstrator
+  show login: True
+---
+objects:
+  - EHNlogo: DAStaticFile.using(filename='C4_01_flinders_logo.png')
+#we will change the flinders logo to the SACAT logo
+---
+mandatory: True
+code: |
+  set_parts(logo='<img src="' + EHNlogo.url_for() + '" style="height: 50px;">')
+# SACAT's website is actually yellow so the colour works
+---
+features:
+  css: C4_01_lnf_with_comments.css
+  debug: True
+  hide standard menu: False
+---
+mandatory: True
+question: Application for Stay Form
+subquestion: |
+  Welcome to the application for stay form.
+  
+  This application can be used to complete SACAT’s application for stay. 
+  
+  You must have first applied for internal review to apply for a stay. For more information about applying for internal review click here <http://www.sacat.sa.gov.au/reviews-of-sacat-decisions/review-of-sacat-decisions-internal-review>
+  
+  For more information about what applying for a stay is click here <http://www.sacat.sa.gov.au/upload/Factsheet%20-%20Seeking%20a%20Stay%20of%20a%20Tribunal%20Order.pdf>
+
+  
+  We suggest users fill out the form with a capable person who has an adequate literacy level if you have a non-English speaking background or a disability. 
+buttons:
+- Continue: continue
+- Exit: exit
+  url: http://www.sacat.sa.gov.au
+- Restart: restart 
+---
+mandatory: True
+question: Legal Disclaimer 
+subquestion: |
+  The information provided in this application is intended to provide general information to assist you with your application, current at the time of publication. SACAT is not able to provide legal advice and the contents should not be relied on as legal advice. 
+  
+  If you agree with these terms press the continue button. 
+buttons:
+- Continue: continue
+- Exit: exit
+  url: http://www.sacat.sa.gov.au
+---
+mandatory: True
+question: What is your name?
+fields:
+  - Salutation: EHNSALUTATION1
+    choices:
+      - Dr
+      - Mr
+      - Mrs
+      - Ms
+  - First Name: EHNFIRSTNAME1
+  - Last Name: EHNLASTNAME1
+
+---
+mandatory: True
+question: Are you the applicant or are you completing this form out for  the applicant?
+fields:
+  - no label: EHNtype
+    choices:
+      - I am the applicant
+      - I am completing this form for the applicant
+      - Other
+---
+mandatory: True
+question: |
+  Have you completed an internal review application?
+  
+  Users will be directed to internal review information available on SACAT’s website.  
+  
+  if you answer no to this question, the exit button will lead you to SACAT's website which will tell you about internal review.
+  field: target_variable
+  
+# Still trying to figure out how to do this
+
+yesno: EHNhas_completed_internal_review
+---
+mandatory: True
+question: What is your SACAT reference number?
+subquestion: |
+  Your SACAT reference number looks like... and can be found... 
+  
+  Disclaimer: (‘please ensure it is the internal review reference number not the reference number for the original decision’).
+fields:
+  - no label: EHNSACAT_ref_no
+---
+mandatory: True
+question: What is the date of the original decision that SACAT made against them?
+subquestion: |
+  If you are not sure what date the original decision was made you can contact SACAT here (url goes here).
+fields:
+  - Date: EHNdate
+    datatype: date
+---
+mandatory: True
+question: What part of the decision do you want to put on hold?  
+# An error showed up every time I put the example we want to include here
+fields:
+  - no label: EHNpart_of_decision
+---
+mandatory: True
+question: What arguments are you putting forward to support your request for a stay. 
+subquestion: |
+     For examples of likely successful and unsuccessful arguments please refer to SACAT’s application for stay factsheet in the link below.
+     <http://www.sacat.sa.gov.au/upload/Factsheet%20-%20Seeking%20a%20Stay%20of%20a%20Tribunal%20Order.pdf>
+     disclaimer: these examples are to be used as a guide and not as a reference. Each user’s situation will be different, so this is only a general guide.  
+fields:
+ - no label: EHNargument
+---
+mandatory: True
+question: what evidence are you presenting in support of putting your order or decision on hold?
+subquestion: |
+  Include anything you think will support your argument. 
+fields:
+ - no label: EHNevidence
+---
+mandatory: True
+question: what are the consequences if your order or decison is not put on hold? e.g. If stay is not granted, the user will become homeless   
+subquestion: |
+    Disclaimer: a copy of this document may be provided to the other party(s) in this matter so that SACAT can seek their views about your application for stay and the consequences for them, if the order were to be stayed.  
+fields:
+ - no label: EHNconsequence
+---
+mandatory: True
+question: what decision do you want SACAT to make in response to the decision or order made against them)?  For example, wanting SACAT to grant a stay of an eviction order 
+
+fields:
+ - no label: EHNorder
+---
+mandatory: True
+question: Have you talked to any other parties about this application, please explain who and when? For example your ...
+fields:
+ - no label: EHNparties
+---

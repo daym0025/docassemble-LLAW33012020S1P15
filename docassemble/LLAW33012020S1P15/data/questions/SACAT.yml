@@ -1,0 +1,141 @@
+---
+objects:
+  - endpoint: DADict
+---
+mandatory: True
+question: Application for Stay Form
+subquestion: |
+  Welcome to the Application for Stay Form.
+ 
+  This application can be used to complete SACAT’s Application for Stay Form.
+ 
+  You must have first applied for internal review to apply for a stay. For more information about applying for internal review, click here: <http://www.sacat.sa.gov.au/reviews-of-sacat-decisions/review-of-sacat-decisions-internal-review>
+ 
+  For more information about applying for a stay, click here: <http://www.sacat.sa.gov.au/upload/Factsheet%20-%20Seeking%20a%20Stay%20of%20a%20Tribunal%20Order.pdf>
+buttons:
+- Continue: continue
+- Exit: exit
+  url: http://www.sacat.sa.gov.au
+---
+mandatory: True
+question: Legal Disclaimer
+subquestion: |
+  ***Disclaimer:***  
+  **The information provided in this application is intended to provide general information to assist you with your application, current at the time of publication. SACAT is not able to provide legal advice and the contents should not be relied on as legal advice.**
+buttons:
+  - "I accept and want to continue": continue
+  - "I do not accept": exit
+    url: http://www.sacat.sa.gov.au
+---
+mandatory: True
+code: |
+  if EHNyes_internal_review == 'Yes':
+    endpoint['eligible']
+  else:
+    endpoint['ineligible']
+---
+event: endpoint['ineligible']
+question: Eligibility requirements not met
+subquestion: |
+  You must first apply for internal review of the original decision to apply for a stay of the original order.
+ 
+  For information about applying for internal review, click here: <http://www.sacat.sa.gov.au/reviews-of-sacat-decisions/review-of-sacat-decisions-internal-review>
+buttons:
+  - Exit: exit
+    url: http://www.sacat.sa.gov.au
+  - Restart: restart
+---
+event: endpoint['eligible']
+question: Your answers
+subquestion: |
+  Thank you for answering the questions provided.
+  Here is a summary of your answers below.
+  Please find your application for stay form attached.
+ 
+  Information required|Your details
+  --------------------|------------
+  Your name|${ EHNsalutation } ${ EHNfirstname } ${ EHNmiddlename } ${ EHNlastname}
+  Applicant or not|${ EHNtype }
+  Applied for internal review|${ EHNyes_internal_review }
+  Reference number|${ EHNSACAT_ref_no }
+  Date of original decision|${ EHNdate }
+  Part of decision|${ EHNpart_of_decision_for_stay }
+  Argument|${ EHNargument }
+  Evidence|${ EHNevidence }
+  Consequences|${ EHNconsequence }
+  Order seeking|${ EHNorder }
+  Other party|${ EHNparties }
+attachment:
+  docx template file: application_for_stay_form.docx
+buttons:
+  - I'm done: exit
+    url: http://www.sacat.sa.gov.au
+  - Do it again: restart
+---
+question: What is your name?
+fields:
+  - Salutation: EHNsalutation
+    choices:
+      - Dr
+      - Mr
+      - Mrs
+      - Ms
+  - First Name: EHNfirstname
+  - Middle Name: EHNmiddlename
+  - Last Name: EHNlastname
+---
+question: Are you the applicant or are you completing this form out on behalf of the applicant?
+fields:
+  - no label: EHNtype
+    choices:
+      - I am the applicant
+      - I am completing this form on behalf of the applicant
+---
+question: Have you applied for internal review of the original decision?
+subquestion: |
+fields:
+  - no label: EHNyes_internal_review
+    choices:
+      - Yes
+      - No
+---
+question: What is your SACAT reference number for your internal review application?
+subquestion: |
+  Your SACAT reference number looks like... and can be found...
+ 
+  Please ensure that this is your internal review reference number not your reference number for the original decision.
+fields:
+  - no label: EHNSACAT_ref_no
+---
+question: What is the date of the original decision that SACAT made against you?
+subquestion: |
+fields:
+  - Date: EHNdate
+    datatype: date
+---
+question: Do you want the entire order to be put on hold or just part of the order? If so, please state which part.
+fields:
+  - no label: EHNpart_of_decision_for_stay
+---
+question: Please set out the reasons why you are asking for the original order to be put on hold.
+fields:
+- no label: EHNargument
+---
+question: Do you have any documents that you would like to provide in support of your application? Please set out what those documents are.
+fields:
+- no label: EHNevidence
+---
+question: What problems will arise if the original order is not put on hold?
+subquestion: |
+  **Disclaimer: a copy of this document may be provided to the other party(s) in this matter so that SACAT can seek their views about your application for stay and the consequences for them, if the order were to be stayed.** 
+fields:
+- no label: EHNconsequence
+---
+question: What outcome are you seeking from SACAT?
+fields:
+- no label: EHNorder
+---
+question: Have you corresponded with the other party about your request for a stay of the original order?
+fields:
+- no label: EHNparties
+---

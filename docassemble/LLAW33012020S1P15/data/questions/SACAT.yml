@@ -6,6 +6,10 @@ metadata:
     Style Demonstrator
   show login: True
 ---
+image sets:
+    images:
+      interim: INTERIM.png.svg
+---
 objects:
   - EHNlogo: DAStaticFile.using(filename='SACAT_Header.png')
 ---

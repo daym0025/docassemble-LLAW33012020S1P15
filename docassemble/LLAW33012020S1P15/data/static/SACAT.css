@@ -31,54 +31,36 @@
     */
     background-color: rgb(255,255,255) !important;
 }
-
-/* This sets the colour of the 'Source' link in the navbar */
-.navbar .nav-item a{
-    color: rgb(0,0,0) !important;
+.navbar .navbar-brand{
+    color : #000;
+    font-weight: bolder;
+    font-size: 2.0em;
+}
+.navbar .navbar-brand:hover{
+    color: #000;
 }
 
-/* dropdown-menu manages the right-hand menu (where we access the Playground
-   amongst other things) */
+.navbar .nav-item a{
+    color: #000 !important;
+}
+
 .navbar .dropdown-menu{
     /*  the rgba() function works just like rgb in that
         it sets a colour.  But the fourth element sets an
         'alpha' or transaparency value.  Here we are saying
         to set the transparency to 30%
     */
-    background-color: rgba(255,211,0,0.3);
+    background-color: rgba(255,255,255,0.3);
 }
-/* Sets properties for when hovering over a menu item in the 
-   drop-down menu */
 .dropdown-item:hover{
-    background-color: rgba(255,211,0,0.5);
+    background-color: rgba(255,255,255,0.3);
 }
-
-/* Sets the appearnce for the 'Continue' button... */
-.btn-primary{
-  color: rgb(0,0,0);
-  background-color: rgb(245, 244, 243);
-  border-color: rgb(245, 244, 243);
+.navbar form button{
+    background-color: rgba(255,255,255,0.3);
+    color:#FFF;
+    /* setting the border to 0 disables the border around the button */
+    border:0;
 }
-/* ...and when hovering over it */
-.btn-primary:hover{
-  color: rgb(0,0,0);
-  background-color: rgb(254,223,1);
-  border-color: rgb(254,223,1);
-}
-
-/* You can make your own styles from scratch if you wish.  There's a lot
-  you can do with styles - much more than setting font sizes and colours.
-  Here's a brief example.  Feel free to explore this further.  Search online
-  or refer to the Mozilla link at the top of this file
-*/
-.MJFheader{
-    /* Set the colour to red */
-    color: rgb(255,0,0);
-    /* Make the font bigger.  This increases the font size by 20% */
-    font-size: 1.2em;
-    /* Make it bold */
-    font-weight: bolder;
-    /* Add a text shadow */
-    /* check out text shadows here: https://cssreference.io/property/text-shadow/ */
-    text-shadow: 2px 4px 10px tomato;
+.navbar form button:hover{
+    background-color: rgba(255,255,255,0.3);
 }

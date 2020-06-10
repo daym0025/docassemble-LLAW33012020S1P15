@@ -45,7 +45,7 @@ def find_package_data(where='.', package='', exclude=standard_exclude, exclude_d
 setup(name='docassemble.LLAW33012020S1P15',
       version='0.0.1',
       description=('A docassemble extension.'),
-      long_description='# P15',
+      long_description='# This app guides users through the simplified application for stay form. The form is meant for users who want to pause a SACAT order temporarily and not users trying to apply for internal review.',
       long_description_content_type='text/markdown',
       author='Kaylee Fietz',
       author_email='fiet0005@flinders.edu.au',
